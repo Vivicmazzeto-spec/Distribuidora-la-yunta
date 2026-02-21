@@ -1,327 +1,1474 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Distribuidora La Yunta</title>
-
-<style>
-
-body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f2f2f2;
-}
-
-/* ================= HEADER ================= */
-
-.header{
-    background: linear-gradient(135deg, #b80000, #ff2a2a);
-    padding:20px 0;
-    box-shadow:0 4px 15px rgba(0,0,0,0.2);
-}
-
-.header-contenido{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    max-width:1200px;
-    margin:auto;
-    padding:0 20px;
-}
-
-.logo{
-    max-width:180px;
-}
-
-.menu a{
-    color:white;
-    text-decoration:none;
-    margin-left:25px;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.menu a:hover{
-    opacity:0.8;
-    border-bottom:2px solid white;
-}
-
-/* ================= BANNER ================= */
-
-.hero-banner{
-    background:#e9e9e9;
-    display:flex;
-    justify-content:center;
-    padding:20px 0;
-}
-
-.banner-img{
-    width:75%;
-    max-width:750px;
-    border-radius:12px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.12);
-}
-
-/* ================= TITULO ================= */
-
-.titulo-seccion{
-    text-align:center;
-    margin:50px 0 20px 0;
-    font-size:24px;
-}
-
-/* ================= PRODUCTOS ================= */
-
-.productos{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap:30px;
-    padding:0 10%;
-}
-
-.producto{
-    background:white;
-    padding:25px;
-    border-radius:18px;
-    box-shadow:0 12px 35px rgba(0,0,0,0.08);
-    text-align:center;
-    transition:0.3s;
-}
-
-.producto:hover{
-    transform:translateY(-6px);
-}
-
-.producto-img{
-    width:100%;
-    height:200px;
-    object-fit:contain;
-    margin-bottom:15px;
-}
-
-.precio{
-    color:#d90000;
-    font-weight:bold;
-    margin:10px 0;
-    font-size:18px;
-}
-
-.cantidad{
-    width:80px;
-    padding:6px;
-    margin:10px 0;
-    text-align:center;
-    border-radius:6px;
-    border:1px solid #ccc;
-}
-
-.btn-agregar{
-    background:#d90000;
-    color:white;
-    border:none;
-    padding:10px 15px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.btn-agregar:hover{
-    background:#a80000;
-}
-
-/* ================= CARRITO ================= */
-
-.carrito{
-    background:white;
-    margin:60px 10%;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.1);
-}
-
-.item-carrito{
-    display:flex;
-    justify-content:space-between;
-    margin:10px 0;
-}
-
-.btn-eliminar{
-    background:none;
-    border:none;
-    color:red;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.total{
-    font-weight:bold;
-    margin-top:20px;
-    font-size:18px;
-}
-
-.btn-finalizar{
-    margin-top:20px;
-    background:#25D366;
-    color:white;
-    border:none;
-    padding:12px 18px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-/* ================= CONTACTO ================= */
-
-.contacto{
-    text-align:center;
-    padding:50px 20px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    background: linear-gradient(135deg, #b80000, #ff2a2a);
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:40px;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuidora Premium - Alimentos y Productos Básicos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-/* ================= STOCK ================= */
+    <style>
+        /* ============================================
+           ESTILOS GLOBALES Y VARIABLES
+           ============================================ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.stock{
-    font-weight:bold;
-    margin:5px 0;
-}
+        :root {
+            --color-rojo: #D32F2F;
+            --color-rojo-oscuro: #B71C1C;
+            --color-blanco: #FFFFFF;
+            --color-gris-claro: #F5F5F5;
+            --color-gris-medio: #EEEEEE;
+            --color-gris-oscuro: #666666;
+            --color-texto: #333333;
+            --color-verde: #4CAF50;
+            --sombra: 0 2px 15px rgba(0, 0, 0, 0.1);
+            --sombra-fuerte: 0 5px 25px rgba(0, 0, 0, 0.15);
+        }
 
-.disponible{
-    color:green;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-gris-claro);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
 
-.limitado{
-    color:#e6a700;
-}
+        /* ============================================
+           NAVBAR / HEADER
+           ============================================ */
 
-.agotado{
-    color:red;
-}
-</style>
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0);
+            transition: all 0.3s ease;
+            padding: 20px 0;
+            box-shadow: none;
+        }
+
+        .navbar.scrolled {
+            background: var(--color-blanco);
+            padding: 10px 0;
+            box-shadow: var(--sombra);
+        }
+
+        .navbar-contenido {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-rojo);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar.scrolled .logo {
+            color: var(--color-rojo);
+        }
+
+        .logo span {
+            color: var(--color-texto);
+        }
+
+        .logo:hover {
+            color: var(--color-rojo-oscuro);
+        }
+
+        .menu {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: var(--color-blanco);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .navbar.scrolled .menu a {
+            color: var(--color-texto);
+        }
+
+        .menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-rojo);
+            transition: width 0.3s ease;
+        }
+
+        .menu a:hover:after {
+            width: 100%;
+        }
+
+        .menu-icon {
+            font-size: 20px;
+            display: none;
+            cursor: pointer;
+            color: var(--color-blanco);
+        }
+
+        .navbar.scrolled .menu-icon {
+            color: var(--color-texto);
+        }
+
+        .instagram-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-blanco);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled .instagram-btn {
+            color: var(--color-rojo);
+        }
+
+        .instagram-btn:hover {
+            background: rgba(211, 47, 47, 0.2);
+            color: var(--color-rojo-oscuro);
+        }
+
+        /* ============================================
+           SECCIÓN HERO / BANNER PRINCIPAL
+           ============================================ */
+
+        .hero {
+            background: linear-gradient(135deg, var(--color-rojo) 0%, var(--color-rojo-oscuro) 100%);
+            color: var(--color-blanco);
+            padding: 150px 20px 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero-contenido {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .btn-principal {
+            background: var(--color-blanco);
+            color: var(--color-rojo);
+            padding: 14px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-principal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ============================================
+           SECCIÓN QUIÉNES SOMOS
+           ============================================ */
+
+        .quienes-somos {
+            background: var(--color-blanco);
+            padding: 80px 20px;
+        }
+
+        .contenedor-seccion {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--color-texto);
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .titulo-seccion:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--color-rojo);
+            border-radius: 2px;
+        }
+
+        .quienes-somos-texto {
+            font-size: 16px;
+            color: var(--color-gris-oscuro);
+            line-height: 1.8;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .beneficio {
+            text-align: center;
+            padding: 30px;
+            background: var(--color-gris-claro);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .beneficio:hover {
+            background: var(--color-gris-medio);
+            transform: translateY(-5px);
+        }
+
+        .beneficio i {
+            font-size: 40px;
+            color: var(--color-rojo);
+            margin-bottom: 15px;
+        }
+
+        .beneficio h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--color-texto);
+        }
+
+        .beneficio p {
+            color: var(--color-gris-oscuro);
+            font-size: 14px;
+        }
+
+        /* ============================================
+           SECCIÓN CATÁLOGO DE PRODUCTOS
+           ============================================ */
+
+        .catalogo {
+            background: var(--color-gris-claro);
+            padding: 80px 20px;
+        }
+
+        .filtros {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filtro-btn {
+            padding: 10px 20px;
+            background: var(--color-blanco);
+            border: 2px solid var(--color-gris-medio);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: var(--color-texto);
+        }
+
+        .filtro-btn.activo {
+            background: var(--color-rojo);
+            color: var(--color-blanco);
+            border-color: var(--color-rojo);
+        }
+
+        .filtro-btn:hover {
+            border-color: var(--color-rojo);
+        }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .producto {
+            background: var(--color-blanco);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: all 0.3s;
+        }
+
+        .producto:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-fuerte);
+        }
+
+        .producto-imagen {
+            width: 100%;
+            height: 220px;
+            background: var(--color-gris-medio);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--color-gris-oscuro);
+            font-weight: 300;
+        }
+
+        .producto-contenido {
+            padding: 20px;
+        }
+
+        .producto-nombre {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-texto);
+            margin-bottom: 10px;
+            min-height: 45px;
+        }
+
+        .producto-precio {
+            font-size: 24px;
+            color: var(--color-rojo);
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .producto-stock {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .stock-disponible {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .stock-limitado {
+            background: #FFF3E0;
+            color: #E65100;
+        }
+
+        .stock-agotado {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+        .producto-cantidad {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .cantidad-input {
+            width: 60px;
+            padding: 8px;
+            border: 1px solid var(--color-gris-medio);
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .btn-agregar-carrito {
+            width: 100%;
+            background: var(--color-rojo);
+            color: var(--color-blanco);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-agregar-carrito:hover {
+            background: var(--color-rojo-oscuro);
+            transform: scale(1.02);
+        }
+
+        .btn-agregar-carrito:disabled {
+            background: var(--color-gris-oscuro);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* ============================================
+           SECCIÓN MARCAS
+           ============================================ */
+
+        .marcas {
+            background: var(--color-blanco);
+            padding: 80px 20px;
+        }
+
+        .marcas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+
+        .marca {
+            height: 150px;
+            background: var(--color-gris-claro);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--color-gris-oscuro);
+            transition: all 0.3s;
+        }
+
+        .marca:hover {
+            background: var(--color-gris-medio);
+            transform: scale(1.05);
+        }
+
+        /* ============================================
+           CARRITO MODAL
+           ============================================ */
+
+        .carrito-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carrito-modal.activo {
+            display: flex;
+        }
+
+        .carrito-contenido {
+            background: var(--color-blanco);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 95%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--sombra-fuerte);
+        }
+
+        .carrito-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--color-gris-medio);
+        }
+
+        .carrito-header h2 {
+            color: var(--color-texto);
+            font-size: 24px;
+        }
+
+        .carrito-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--color-gris-oscuro);
+            transition: color 0.3s;
+        }
+
+        .carrito-close:hover {
+            color: var(--color-rojo);
+        }
+
+        .carrito-items {
+            margin-bottom: 25px;
+        }
+
+        .carrito-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--color-gris-medio);
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-nombre {
+            font-weight: 600;
+            color: var(--color-texto);
+            margin-bottom: 5px;
+        }
+
+        .item-precio {
+            color: var(--color-gris-oscuro);
+            font-size: 14px;
+        }
+
+        .item-cantidad {
+            font-weight: 600;
+            color: var(--color-rojo);
+            margin: 0 15px;
+        }
+
+        .btn-eliminar-item {
+            background: none;
+            border: none;
+            color: var(--color-rojo);
+            cursor: pointer;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .btn-eliminar-item:hover {
+            color: var(--color-rojo-oscuro);
+        }
+
+        .carrito-vacio {
+            text-align: center;
+            padding: 30px;
+            color: var(--color-gris-oscuro);
+        }
+
+        .carrito-total {
+            background: var(--color-gris-claro);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .carrito-total-valor {
+            color: var(--color-rojo);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .btn-finalizar-compra {
+            width: 100%;
+            background: var(--color-verde);
+            color: var(--color-blanco);
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-finalizar-compra:hover {
+            background: #45a049;
+            transform: scale(1.02);
+        }
+
+        .btn-finalizar-compra:disabled {
+            background: var(--color-gris-oscuro);
+            cursor: not-allowed;
+        }
+
+        /* ============================================
+           BOTÓN FLOTANTE WHATSAPP
+           ============================================ */
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-blanco);
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+
+        footer {
+            background: var(--color-texto);
+            color: var(--color-blanco);
+            padding: 50px 20px 20px;
+        }
+
+        .footer-contenido {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-seccion h3 {
+            color: var(--color-rojo);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-seccion p {
+            color: #BDBDBD;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .footer-seccion a {
+            color: #BDBDBD;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-seccion a:hover {
+            color: var(--color-rojo);
+        }
+
+        .redes-sociales {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .red-social {
+            width: 40px;
+            height: 40px;
+            background: var(--color-rojo);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-blanco);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .red-social:hover {
+            background: var(--color-rojo-oscuro);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: #BDBDBD;
+            font-size: 14px;
+        }
+
+        /* ============================================
+           CARRITO ICONO EN NAVBAR
+           ============================================ */
+
+        .carrito-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .carrito-icon:hover {
+            color: var(--color-rojo);
+        }
+
+        .carrito-contador {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--color-rojo);
+            color: var(--color-blanco);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--color-rojo);
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .menu.activo {
+                display: flex;
+            }
+
+            .navbar.scrolled .menu.activo {
+                background: var(--color-rojo);
+            }
+
+            .navbar.scrolled .menu a {
+                color: var(--color-blanco);
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .titulo-seccion {
+                font-size: 28px;
+            }
+
+            .grid-productos {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .whatsapp-btn {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
+
+            .carrito-contenido {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-contenido {
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .hero {
+                padding: 100px 15px 80px;
+                margin-top: 50px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .quienes-somos,
+            .catalogo,
+            .marcas {
+                padding: 50px 15px;
+            }
+
+            .titulo-seccion {
+                font-size: 22px;
+                margin-bottom: 30px;
+            }
+
+            .grid-productos {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-contenido {
+                gap: 25px;
+            }
+        }
+
+    </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<div class="header">
-    <div class="header-contenido">
-        <img src="logo.png" alt="Distribuidora La Yunta" class="logo">
-        <nav class="menu">
-            <a href="#">Inicio</a>
-            <a href="#productos">Ver Catálogo</a>
-            <a href="#contacto">Contacto</a>
-            <a href="https://instagram.com/TUUSUARIO" target="_blank">Instagram</a>
-        </nav>
-    </div>
-</div>
-
-<!-- BANNER -->
-<div class="hero-banner">
-    <img src="banner.png" alt="Distribuidora La Yunta" class="banner-img">
-</div>
-
-<h2 class="titulo-seccion">Productos Destacados</h2>
-
-<!-- PRODUCTOS -->
-<section class="productos" id="productos">
-
-    <div class="producto">
-        <img src="arroz.jpeg" alt="Arroz Largo Fino" class="producto-img">
-        <h3>Arroz Largo Fino 1kg</h3>
-        <p class="precio">$850</p>
-        <input type="number" min="1" value="1" class="cantidad" id="cantidad-arroz">
-        <br>
-        <button class="btn-agregar" onclick="agregarAlCarrito('Arroz Largo Fino 1kg', 850, 'cantidad-arroz')">
-            Agregar al carrito
-        </button>
-    </div>
-
-</section>
-
-<!-- CARRITO -->
-<div class="carrito">
-    <h2>Carrito</h2>
-    <div id="lista-carrito"></div>
-    <div class="total" id="total">Total: $0</div>
-    <button class="btn-finalizar" onclick="finalizarPedido()">
-        Finalizar pedido por WhatsApp
-    </button>
-</div>
-
-<!-- CONTACTO -->
-<div class="contacto" id="contacto">
-    <h2>Contacto</h2>
-    <p>Ventas mayoristas</p>
-    <p>WhatsApp: +54 9 XXXX XXXX</p>
-</div>
-
-<footer>
-    © 2026 Distribuidora La Yunta - Venta Mayorista
-</footer>
-
-<script>
-
-let carrito = [];
-
-function agregarAlCarrito(nombre, precio, idCantidad){
-    let cantidad = parseInt(document.getElementById(idCantidad).value);
-    if(cantidad > 0){
-        carrito.push({nombre, precio, cantidad});
-        actualizarCarrito();
-    }
-}
-
-function actualizarCarrito(){
-    let lista = document.getElementById("lista-carrito");
-    lista.innerHTML = "";
-    let total = 0;
-
-    carrito.forEach((item, index) => {
-        total += item.precio * item.cantidad;
-
-        lista.innerHTML += `
-            <div class="item-carrito">
-                ${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}
-                <button class="btn-eliminar" onclick="eliminarItem(${index})">X</button>
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-contenido">
+            <a href="#" class="logo">Distribuidora <span>Premium</span></a>
+            
+            <div class="menu" id="menu">
+                <a href="#inicio">Inicio</a>
+                <a href="#catalogo">Ver Catálogo</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+                <a href="https://instagram.com/distribuidora_premium" target="_blank" class="instagram-btn">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
             </div>
+
+            <div style="display: flex; gap: 20px; align-items: center;">
+                <div class="carrito-icon" id="carritoIcon" style="color: var(--color-blanco);">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="carrito-contador" id="carritoContador">0</span>
+                </div>
+                <button class="menu-icon" id="menuIcon">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="inicio">
+        <div class="hero-contenido">
+            <h1>Tus Alimentos de Confianza</h1>
+            <p>Productos frescos y de calidad para tu hogar, con entregas rápidas en toda la ciudad</p>
+            <a href="#catalogo" class="btn-principal">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <!-- ==================== QUIÉNES SOMOS ==================== -->
+    <section class="quienes-somos" id="nosotros">
+        <div class="contenedor-seccion">
+            <h2 class="titulo-seccion">Quiénes Somos</h2>
+            <p class="quienes-somos-texto">
+                Somos una distribuidora minorista con más de 10 años de experiencia en el mercado argentino. 
+                Nos comprometemos con ofrecer productos de la más alta calidad, precios competitivos y un servicio 
+                excepcional a nuestros clientes. Trabajamos directamente con los mejores proveedores para garantizar 
+                frescura, variedad y confiabilidad en cada compra.
+            </p>
+
+            <div class="beneficios">
+                <div class="beneficio">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Productos Frescos</h3>
+                    <p>Selección diaria de alimentos de la más alta calidad</p>
+                </div>
+                <div class="beneficio">
+                    <i class="fas fa-truck"></i>
+                    <h3>Entrega Rápida</h3>
+                    <p>Recibe tu pedido en 24-48 horas en tu domicilio</p>
+                </div>
+                <div class="beneficio">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Garantía de Confianza</h3>
+                    <p>100% de garantía en todos nuestros productos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CATÁLOGO ==================== -->
+    <section class="catalogo" id="catalogo">
+        <div class="contenedor-seccion">
+            <h2 class="titulo-seccion">Nuestros Productos</h2>
+
+            <div class="filtros" id="filtros">
+                <button class="filtro-btn activo" data-filtro="todos">Todos</button>
+                <button class="filtro-btn" data-filtro="lacteos">Lácteos</button>
+                <button class="filtro-btn" data-filtro="carnes">Carnes</button>
+                <button class="filtro-btn" data-filtro="frutas">Frutas & Verduras</button>
+                <button class="filtro-btn" data-filtro="alacena">Alacena</button>
+            </div>
+
+            <div class="grid-productos" id="gridProductos"></div>
+        </div>
+    </section>
+
+    <!-- ==================== MARCAS ==================== -->
+    <section class="marcas" id="marcas">
+        <div class="contenedor-seccion">
+            <h2 class="titulo-seccion">Nuestras Marcas</h2>
+            <div class="marcas-grid">
+                <div class="marca">🥛</div>
+                <div class="marca">🍗</div>
+                <div class="marca">🥕</div>
+                <div class="marca">🌾</div>
+                <div class="marca">🍊</div>
+                <div class="marca">🧈</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACTO ==================== -->
+    <section id="contacto" style="background: var(--color-blanco); padding: 80px 20px; text-align: center;">
+        <div class="contenedor-seccion">
+            <h2 class="titulo-seccion">Contacto</h2>
+            <p style="color: var(--color-gris-oscuro); font-size: 16px; margin-bottom: 30px;">
+                ¿Tienes preguntas? Comunícate con nosotros a través de cualquiera de estos canales
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div>
+                    <i class="fas fa-map-marker-alt" style="font-size: 32px; color: var(--color-rojo); margin-bottom: 15px;"></i>
+                    <h3 style="color: var(--color-texto); margin-bottom: 10px;">Dirección</h3>
+                    <p style="color: var(--color-gris-oscuro);">Av. Corrientes 3500, CABA<br>Buenos Aires, Argentina</p>
+                </div>
+
+                <div>
+                    <i class="fas fa-phone" style="font-size: 32px; color: var(--color-rojo); margin-bottom: 15px;"></i>
+                    <h3 style="color: var(--color-texto); margin-bottom: 10px;">Teléfono</h3>
+                    <p style="color: var(--color-gris-oscuro);">(011) 4555-1234<br>Lunes a Viernes 8-18hs</p>
+                </div>
+
+                <div>
+                    <i class="fas fa-envelope" style="font-size: 32px; color: var(--color-rojo); margin-bottom: 15px;"></i>
+                    <h3 style="color: var(--color-texto); margin-bottom: 10px;">Email</h3>
+                    <p style="color: var(--color-gris-oscuro);">info@distribuidorapremium.com.ar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-contenido">
+            <div class="footer-seccion">
+                <h3>Sobre Nosotros</h3>
+                <p>Somos una distribuidora minorista comprometida con la calidad y el servicio excepcional a nuestros clientes en Argentina.</p>
+            </div>
+
+            <div class="footer-seccion">
+                <h3>Enlaces Rápidos</h3>
+                <p><a href="#inicio">Inicio</a></p>
+                <p><a href="#catalogo">Catálogo</a></p>
+                <p><a href="#nosotros">Nosotros</a></p>
+                <p><a href="#contacto">Contacto</a></p>
+            </div>
+
+            <div class="footer-seccion">
+                <h3>Contacto</h3>
+                <p>Av. Corrientes 3500, CABA</p>
+                <p>(011) 4555-1234</p>
+                <p>info@distribuidorapremium.com.ar</p>
+            </div>
+
+            <div class="footer-seccion">
+                <h3>Síguenos</h3>
+                <div class="redes-sociales">
+                    <a href="https://instagram.com/distribuidora_premium" class="red-social" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com/distribuidora_premium" class="red-social" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/5491145551234" class="red-social" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Distribuidora Premium. Todos los derechos reservados | Alimentos y Productos Básicos para el Hogar</p>
+        </div>
+    </footer>
+
+    <!-- ==================== BOTÓN WHATSAPP ==================== -->
+    <a href="https://wa.me/5491145551234?text=Hola,%20tengo%20una%20consulta" class="whatsapp-btn" target="_blank" title="Contacto por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ==================== MODAL CARRITO ==================== -->
+    <div class="carrito-modal" id="carritoModal">
+        <div class="carrito-contenido">
+            <div class="carrito-header">
+                <h2>Mi Carrito</h2>
+                <button class="carrito-close" id="carritoClose">&times;</button>
+            </div>
+            <div class="carrito-items" id="carritoItems"></div>
+            <div id="carritoVacio" class="carrito-vacio">
+                <p>Tu carrito está vacío</p>
+            </div>
+            <div id="carritoFooter" style="display: none;">
+                <div class="carrito-total">
+                    <span>Total:</span>
+                    <span class="carrito-total-valor" id="carritoTotalValor">$0</span>
+                </div>
+                <button class="btn-finalizar-compra" id="btnFinalizarCompra">
+                    <i class="fab fa-whatsapp"></i> Finalizar por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // DATOS DE PRODUCTOS
+        // ============================================
+
+        const productos = [
+            {
+                id: 1,
+                nombre: "Leche Entera 1L",
+                precio: 2.50,
+                categoria: "lacteos",
+                stock: "disponible",
+                emoji: "🥛"
+            },
+            {
+                id: 2,
+                nombre: "Queso de Pasta Dura 400g",
+                precio: 5.99,
+                categoria: "lacteos",
+                stock: "disponible",
+                emoji: "🧀"
+            },
+            {
+                id: 3,
+                nombre: "Yogur Natural 500g",
+                precio: 3.49,
+                categoria: "lacteos",
+                stock: "limitado",
+                emoji: "🥛"
+            },
+            {
+                id: 4,
+                nombre: "Pechuga de Pollo 1kg",
+                precio: 8.99,
+                categoria: "carnes",
+                stock: "disponible",
+                emoji: "🍗"
+            },
+            {
+                id: 5,
+                nombre: "Carne Molida 1kg",
+                precio: 9.99,
+                categoria: "carnes",
+                stock: "disponible",
+                emoji: "🥩"
+            },
+            {
+                id: 6,
+                nombre: "Jamón Cocido 500g",
+                precio: 6.49,
+                categoria: "carnes",
+                stock: "limitado",
+                emoji: "🥓"
+            },
+            {
+                id: 7,
+                nombre: "Lechuga Fresca",
+                precio: 1.99,
+                categoria: "frutas",
+                stock: "disponible",
+                emoji: "🥬"
+            },
+            {
+                id: 8,
+                nombre: "Tomates Frescos 1kg",
+                precio: 2.99,
+                categoria: "frutas",
+                stock: "disponible",
+                emoji: "🍅"
+            },
+            {
+                id: 9,
+                nombre: "Zanahoria 1kg",
+                precio: 1.49,
+                categoria: "frutas",
+                stock: "disponible",
+                emoji: "🥕"
+            },
+            {
+                id: 10,
+                nombre: "Manzanas Red Delicious 1kg",
+                precio: 3.99,
+                categoria: "frutas",
+                stock: "limitado",
+                emoji: "🍎"
+            },
+            {
+                id: 11,
+                nombre: "Arroz Integral 1kg",
+                precio: 2.49,
+                categoria: "alacena",
+                stock: "disponible",
+                emoji: "🌾"
+            },
+            {
+                id: 12,
+                nombre: "Pasta Integral 500g",
+                precio: 1.79,
+                categoria: "alacena",
+                stock: "disponible",
+                emoji: "🍝"
+            },
+            {
+                id: 13,
+                nombre: "Aceite de Oliva Extra Virgen 500ml",
+                precio: 7.99,
+                categoria: "alacena",
+                stock: "limitado",
+                emoji: "🍶"
+            },
+            {
+                id: 14,
+                nombre: "Harina 1kg",
+                precio: 1.29,
+                categoria: "alacena",
+                stock: "disponible",
+                emoji: "🌾"
+            },
+            {
+                id: 15,
+                nombre: "Azúcar 1kg",
+                precio: 1.49,
+                categoria: "alacena",
+                stock: "agotado",
+                emoji: "🍯"
+            }
+        ];
+
+        let carrito = [];
+        let filtroActual = "todos";
+
+        // ============================================
+        // NAVBAR SCROLL
+        // ============================================
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // MENU MÓVIL
+        // ============================================
+
+        const menuIcon = document.getElementById('menuIcon');
+        const menu = document.getElementById('menu');
+
+        menuIcon.addEventListener('click', () => {
+            menu.classList.toggle('activo');
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('activo');
+            });
+        });
+
+        // ============================================
+        // RENDERIZAR PRODUCTOS
+        // ============================================
+
+        function renderProductos(filtro = 'todos') {
+            const gridProductos = document.getElementById('gridProductos');
+            gridProductos.innerHTML = '';
+
+            const productosFiltrados = filtro === 'todos' 
+                ? productos 
+                : productos.filter(p => p.categoria === filtro);
+
+            productosFiltrados.forEach(producto => {
+                const div = document.createElement('div');
+                div.className = 'producto';
+                
+                let claseStock = 'stock-disponible';
+                if (producto.stock === 'limitado') claseStock = 'stock-limitado';
+                if (producto.stock === 'agotado') claseStock = 'stock-agotado';
+
+                div.innerHTML = `
+                    <div class="producto-imagen">${producto.emoji}</div>
+                    <div class="producto-contenido">
+                        <h3 class="producto-nombre">${producto.nombre}</h3>
+                        <div class="producto-precio">$${producto.precio.toFixed(2)}</div>
+                        <span class="producto-stock ${claseStock}">
+                            ${producto.stock === 'disponible' ? '✓ En stock' : 
+                              producto.stock === 'limitado' ? '⚠ Stock limitado' : 
+                              '✗ Sin stock'}
+                        </span>
+                        <div class="producto-cantidad">
+                            <input type="number" min="1" value="1" class="cantidad-input" id="cantidad-${producto.id}">
+                        </div>
+                        <button class="btn-agregar-carrito" 
+                                onclick="agregarAlCarrito(${producto.id})" 
+                                ${producto.stock === 'agotado' ? 'disabled' : ''}>
+                            <i class="fas fa-shopping-cart"></i> Agregar
+                        </button>
+                    </div>
+                `;
+                gridProductos.appendChild(div);
+            });
+        }
+
+        // ============================================
+        // FILTROS
+        // ============================================
+
+        document.querySelectorAll('.filtro-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
+                e.target.classList.add('activo');
+                filtroActual = e.target.dataset.filtro;
+                renderProductos(filtroActual);
+            });
+        });
+
+        // ============================================
+        // CARRITO FUNCIONES
+        // ============================================
+
+        function agregarAlCarrito(idProducto) {
+            const cantidad = parseInt(document.getElementById(`cantidad-${idProducto}`).value);
+            const producto = productos.find(p => p.id === idProducto);
+
+            if (cantidad > 0 && producto.stock !== 'agotado') {
+                const itemExistente = carrito.find(item => item.id === idProducto);
+
+                if (itemExistente) {
+                    itemExistente.cantidad += cantidad;
+                } else {
+                    carrito.push({
+                        ...producto,
+                        cantidad: cantidad
+                    });
+                }
+
+                actualizarCarrito();
+                mostrarNotificacion('Producto agregado al carrito');
+            }
+        }
+
+        function actualizarCarrito() {
+            const carritoItems = document.getElementById('carritoItems');
+            const carritoVacio = document.getElementById('carritoVacio');
+            const carritoFooter = document.getElementById('carritoFooter');
+            const carritoContador = document.getElementById('carritoContador');
+
+            carritoItems.innerHTML = '';
+            let total = 0;
+            let cantidadTotal = 0;
+
+            if (carrito.length === 0) {
+                carritoVacio.style.display = 'block';
+                carritoFooter.style.display = 'none';
+                carritoContador.textContent = '0';
+                return;
+            }
+
+            carritoVacio.style.display = 'none';
+            carritoFooter.style.display = 'block';
+
+            carrito.forEach((item, index) => {
+                const subtotal = item.precio * item.cantidad;
+                total += subtotal;
+                cantidadTotal += item.cantidad;
+
+                const div = document.createElement('div');
+                div.className = 'carrito-item';
+                div.innerHTML = `
+                    <div class="item-info">
+                        <div class="item-nombre">${item.emoji} ${item.nombre}</div>
+                        <div class="item-precio">$${item.precio.toFixed(2)} c/u</div>
+                    </div>
+                    <div class="item-cantidad">${item.cantidad}</div>
+                    <button class="btn-eliminar-item" onclick="eliminarDelCarrito(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                carritoItems.appendChild(div);
+            });
+
+            document.getElementById('carritoTotalValor').textContent = `$${total.toFixed(2)}`;
+            carritoContador.textContent = cantidadTotal;
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+            mostrarNotificacion('Producto eliminado del carrito');
+        }
+
+        function finalizarCompra() {
+            if (carrito.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+
+            let mensaje = "Hola! Quiero hacer el siguiente pedido:%0A%0A";
+            let total = 0;
+
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                total += subtotal;
+                mensaje += `${item.nombre}%0ACantidad: ${item.cantidad}%0ASubtotal: $${subtotal.toFixed(2)}%0A%0A`;
+            });
+
+            mensaje += `*TOTAL: $${total.toFixed(2)}*`;
+
+            const numero = "5491145551234"; // Reemplazar con tu número real
+            const url = `https://wa.me/${numero}?text=${mensaje}`;
+
+            window.open(url, '_blank');
+        }
+
+        // ============================================
+        // MODAL CARRITO
+        // ============================================
+
+        const carritoIcon = document.getElementById('carritoIcon');
+        const carritoModal = document.getElementById('carritoModal');
+        const carritoClose = document.getElementById('carritoClose');
+        const btnFinalizarCompra = document.getElementById('btnFinalizarCompra');
+
+        carritoIcon.addEventListener('click', () => {
+            carritoModal.classList.add('activo');
+        });
+
+        carritoClose.addEventListener('click', () => {
+            carritoModal.classList.remove('activo');
+        });
+
+        carritoModal.addEventListener('click', (e) => {
+            if (e.target === carritoModal) {
+                carritoModal.classList.remove('activo');
+            }
+        });
+
+        btnFinalizarCompra.addEventListener('click', finalizarCompra);
+
+        // ============================================
+        // NOTIFICACIONES
+        // ============================================
+
+        function mostrarNotificacion(mensaje) {
+            // Crear elemento de notificación
+            const notificacion = document.createElement('div');
+            notificacion.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: var(--color-rojo);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: var(--sombra-fuerte);
+                z-index: 3000;
+                animation: slideIn 0.3s ease;
+            `;
+            notificacion.textContent = mensaje;
+            document.body.appendChild(notificacion);
+
+            setTimeout(() => {
+                notificacion.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notificacion.remove(), 300);
+            }, 2000);
+        }
+
+        // Agregar animaciones CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
         `;
-    });
+        document.head.appendChild(style);
 
-    document.getElementById("total").innerText = "Total: $" + total;
-}
+        // ============================================
+        // INICIALIZAR
+        // ============================================
 
-function eliminarItem(index){
-    carrito.splice(index, 1);
-    actualizarCarrito();
-}
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProductos('todos');
+        });
 
-function finalizarPedido(){
-    if(carrito.length === 0){
-        alert("El carrito está vacío");
-        return;
-    }
-
-    let mensaje = "Hola! Quiero realizar el siguiente pedido:%0A";
-    carrito.forEach(item => {
-        mensaje += "- " + item.nombre + " x" + item.cantidad + "%0A";
-    });
-
-    let telefono = "5492901604139"; // PONÉ TU NÚMERO
-    let url = "https://wa.me/" + telefono + "?text=" + mensaje;
-
-    window.open(url, "_blank");
-}
-
-</script>
+    </script>
 
 </body>
 </html>
