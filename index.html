@@ -13,20 +13,41 @@ body{
     background:#f2f2f2;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 .header{
     background: linear-gradient(135deg, #b80000, #ff2a2a);
-    text-align:center;
-    padding:25px 20px;
+    padding:20px 0;
     box-shadow:0 4px 15px rgba(0,0,0,0.2);
 }
 
-.logo{
-    max-width:220px;
+.header-contenido{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    max-width:1200px;
+    margin:auto;
+    padding:0 20px;
 }
 
-/* BANNER */
+.logo{
+    max-width:180px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    opacity:0.8;
+    border-bottom:2px solid white;
+}
+
+/* ================= BANNER ================= */
 
 .hero-banner{
     background:#e9e9e9;
@@ -42,7 +63,7 @@ body{
     box-shadow:0 8px 25px rgba(0,0,0,0.12);
 }
 
-/* TITULO */
+/* ================= TITULO ================= */
 
 .titulo-seccion{
     text-align:center;
@@ -50,7 +71,7 @@ body{
     font-size:24px;
 }
 
-/* PRODUCTOS */
+/* ================= PRODUCTOS ================= */
 
 .productos{
     display:grid;
@@ -109,7 +130,7 @@ body{
     background:#a80000;
 }
 
-/* CARRITO */
+/* ================= CARRITO ================= */
 
 .carrito{
     background:white;
@@ -117,10 +138,6 @@ body{
     padding:30px;
     border-radius:18px;
     box-shadow:0 15px 40px rgba(0,0,0,0.1);
-}
-
-.carrito h2{
-    margin-top:0;
 }
 
 .item-carrito{
@@ -154,7 +171,14 @@ body{
     font-weight:bold;
 }
 
-/* FOOTER */
+/* ================= CONTACTO ================= */
+
+.contacto{
+    text-align:center;
+    padding:50px 20px;
+}
+
+/* ================= FOOTER ================= */
 
 footer{
     background: linear-gradient(135deg, #b80000, #ff2a2a);
@@ -169,20 +193,31 @@ footer{
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
-    <img src="logo.png" alt="Distribuidora La Yunta" class="logo">
+    <div class="header-contenido">
+        <img src="logo.png" alt="Distribuidora La Yunta" class="logo">
+        <nav class="menu">
+            <a href="#">Inicio</a>
+            <a href="#productos">Ver Catálogo</a>
+            <a href="#contacto">Contacto</a>
+            <a href="https://instagram.com/TUUSUARIO" target="_blank">Instagram</a>
+        </nav>
+    </div>
 </div>
 
+<!-- BANNER -->
 <div class="hero-banner">
     <img src="banner.png" alt="Distribuidora La Yunta" class="banner-img">
 </div>
 
 <h2 class="titulo-seccion">Productos Destacados</h2>
 
-<section class="productos">
+<!-- PRODUCTOS -->
+<section class="productos" id="productos">
 
     <div class="producto">
-        <img src="arroz.jpeg" alt="Arroz Largo Fino" class="producto-img">
+        <img src="arroz.png" alt="Arroz Largo Fino" class="producto-img">
         <h3>Arroz Largo Fino 1kg</h3>
         <p class="precio">$850</p>
         <input type="number" min="1" value="1" class="cantidad" id="cantidad-arroz">
@@ -194,6 +229,7 @@ footer{
 
 </section>
 
+<!-- CARRITO -->
 <div class="carrito">
     <h2>Carrito</h2>
     <div id="lista-carrito"></div>
@@ -201,6 +237,13 @@ footer{
     <button class="btn-finalizar" onclick="finalizarPedido()">
         Finalizar pedido por WhatsApp
     </button>
+</div>
+
+<!-- CONTACTO -->
+<div class="contacto" id="contacto">
+    <h2>Contacto</h2>
+    <p>Ventas mayoristas</p>
+    <p>WhatsApp: +54 9 XXXX XXXX</p>
 </div>
 
 <footer>
@@ -212,9 +255,7 @@ footer{
 let carrito = [];
 
 function agregarAlCarrito(nombre, precio, idCantidad){
-    let cantidad = document.getElementById(idCantidad).value;
-    cantidad = parseInt(cantidad);
-
+    let cantidad = parseInt(document.getElementById(idCantidad).value);
     if(cantidad > 0){
         carrito.push({nombre, precio, cantidad});
         actualizarCarrito();
@@ -256,7 +297,7 @@ function finalizarPedido(){
         mensaje += "- " + item.nombre + " x" + item.cantidad + "%0A";
     });
 
-    let telefono = "5492901604139"; // PONÉ TU NÚMERO
+    let telefono = "549XXXXXXXXXX"; // PONÉ TU NÚMERO
     let url = "https://wa.me/" + telefono + "?text=" + mensaje;
 
     window.open(url, "_blank");
