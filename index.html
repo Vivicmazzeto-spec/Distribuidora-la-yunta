@@ -2,104 +2,118 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Distribuidora La Yunta</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distribuidora La Yunta</title>
 
 <style>
 
 body{
     margin:0;
-    font-family: Arial, sans-serif;
-    background:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f5f5;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 
-header{
-    background: linear-gradient(90deg,#d90000,#ffcc00);
-    color:white;
+.header{
+    background:#d90000;
+    text-align:center;
     padding:20px;
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
+    max-width:220px;
 }
 
-.logo img{
-    height:70px;
-}
-
-/* ===== BANNER ===== */
+/* BANNER */
 
 .hero-banner{
     width:100%;
+    background:white;
     display:flex;
     justify-content:center;
-    background:white;
+    padding:30px 0;
 }
 
 .banner-img{
-    width:100%;
-    max-width:1200px;
+    width:85%;
+    max-width:900px;
     height:auto;
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* ===== SECCIONES ===== */
+/* PRODUCTOS */
 
-section{
-    padding:30px;
+.productos{
+    display:flex;
+    justify-content:center;
+    margin:70px 0;
 }
 
 .producto{
-    background:#fff;
-    border:1px solid #ddd;
-    padding:15px;
-    margin-bottom:15px;
-    border-radius:8px;
+    background:white;
+    width:300px;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+    text-align:center;
+    transition:0.3s;
 }
 
-/* ===== BOTONES ===== */
+.producto:hover{
+    transform:translateY(-8px);
+}
 
-button{
+.producto-img{
+    width:100%;
+    height:auto;
+    margin-bottom:20px;
+}
+
+.producto h3{
+    margin:10px 0;
+}
+
+.precio{
+    font-weight:bold;
+    margin:15px 0;
+    color:#d90000;
+    font-size:18px;
+}
+
+.cantidad{
+    width:90px;
+    padding:8px;
+    margin:10px 0 20px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+    text-align:center;
+}
+
+.btn-comprar{
     background:#d90000;
     color:white;
     border:none;
-    padding:8px 15px;
+    padding:12px 18px;
+    border-radius:10px;
     cursor:pointer;
-    border-radius:5px;
+    font-weight:bold;
+    transition:0.3s;
 }
 
-button:hover{
+.btn-comprar:hover{
     background:#a80000;
 }
 
-/* ===== REDES ===== */
-
-.redes{
-    display:flex;
-    gap:15px;
-    margin-top:20px;
-}
-
-.redes a{
-    text-decoration:none;
-    padding:10px 15px;
-    background:#ffcc00;
-    color:black;
-    border-radius:6px;
-    font-weight:bold;
-}
-
-/* ===== FOOTER ===== */
+/* FOOTER */
 
 footer{
     background:#d90000;
     color:white;
     text-align:center;
-    padding:15px;
-    margin-top:30px;
+    padding:20px;
+    margin-top:40px;
 }
 
 </style>
@@ -107,89 +121,47 @@ footer{
 
 <body>
 
-<header>
-    <div class="logo">
-        <!-- CAMBIAR logo.png por el nombre real de tu archivo -->
-        <img src="logo.png" alt="Logo">
-        <h2>Distribuidora La Yunta</h2>
-    </div>
-</header>
+<!-- HEADER -->
+<div class="header">
+    <img src="logo.png" alt="Distribuidora La Yunta" class="logo">
+</div>
 
-<!-- ===== BANNER GRANDE ===== -->
+<!-- BANNER -->
 <div class="hero-banner">
-    <!-- CAMBIAR banner.png por el nombre real de tu imagen grande -->
     <img src="banner.png" alt="Distribuidora La Yunta" class="banner-img">
 </div>
 
-<section>
-    <h2>Catálogo</h2>
+<!-- PRODUCTO -->
+<section class="productos">
 
     <div class="producto">
-        <h3>Producto 1</h3>
-        <p>$100</p>
-        <button onclick="agregar('Producto 1',100)">Agregar</button>
+        <img src="arroz.png" alt="Arroz Largo Fino" class="producto-img">
+        
+        <h3>Arroz Largo Fino 1kg</h3>
+        <p class="precio">$850 por unidad</p>
+
+        <label for="cantidad">Cantidad:</label><br>
+        <input type="number" id="cantidad" min="1" value="1" class="cantidad"><br>
+
+        <button class="btn-comprar" onclick="enviarPedido()">
+            Consultar por WhatsApp
+        </button>
     </div>
 
-    <div class="producto">
-        <h3>Producto 2</h3>
-        <p>$200</p>
-        <button onclick="agregar('Producto 2',200)">Agregar</button>
-    </div>
-</section>
-
-<section>
-    <h2>Pedido</h2>
-    <ul id="lista"></ul>
-    <h3>Total: $<span id="total">0</span></h3>
-
-    <button onclick="enviarPedido()">Enviar por WhatsApp</button>
-
-    <div class="redes">
-        <!-- CAMBIAR EL NUMERO -->
-        <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
-
-        <!-- CAMBIAR USUARIO -->
-        <a href="https://instagram.com/TUUSUARIO" target="_blank">Instagram</a>
-    </div>
 </section>
 
 <footer>
-    © 2026 Distribuidora La Yunta
+    © 2026 Distribuidora La Yunta - Venta Mayorista
 </footer>
 
 <script>
-
-let carrito=[];
-let total=0;
-
-function agregar(nombre,precio){
-    carrito.push({nombre,precio});
-    total+=precio;
-    actualizar();
-}
-
-function actualizar(){
-    let lista=document.getElementById("lista");
-    lista.innerHTML="";
-    carrito.forEach(item=>{
-        let li=document.createElement("li");
-        li.textContent=item.nombre+" - $"+item.precio;
-        lista.appendChild(li);
-    });
-    document.getElementById("total").textContent=total;
-}
-
 function enviarPedido(){
-    let mensaje="Hola, quiero hacer el siguiente pedido:%0A";
-    carrito.forEach(item=>{
-        mensaje+=item.nombre+" - $"+item.precio+"%0A";
-    });
-    mensaje+="Total: $"+total;
-
-    // CAMBIAR NUMERO
-    window.open("https://wa.me/549XXXXXXXXXX?text="+mensaje);
+    var cantidad = document.getElementById("cantidad").value;
+    var mensaje = "Hola! Quiero pedir " + cantidad + " unidades de Arroz Largo Fino 1kg.";
+    var telefono = "549XXXXXXXXXX"; // REEMPLAZÁ con tu número
+    var url = "https://wa.me/" + telefono + "?text=" + encodeURIComponent(mensaje);
+    window.open(url, "_blank");
 }
-
 </script>
 
 </body>
