@@ -1,197 +1,194 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Distribuidora La Yunta</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* ===== ESTILOS GENERALES ===== */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #fff;
-        }
+<meta charset="UTF-8">
+<title>Distribuidora La Yunta</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        header {
-            background: linear-gradient(90deg,#d90000,#ffcc00);
-            color: white;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#fff;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+header{
+    background: linear-gradient(90deg,#d90000,#ffcc00);
+    color:white;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
-        .logo img {
-            height: 70px; /* tamaño del logo */
-        }
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
 
-        .hero-banner {
-            width: 100%;
-            background: white;
-            display: flex;
-            justify-content: center;
-        }
+.logo img{
+    height:70px;
+}
 
-        .banner-img {
-            width: 100%;
-            max-width: 1200px;
-            height: auto;
-        }
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:30px;
+    background:#fff3e0;
+}
 
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 30px;
-            background: #fff3e0;
-        }
+.hero-text{
+    max-width:50%;
+}
 
-        .hero-text {
-            max-width: 50%;
-        }
+.hero h1{
+    color:#d90000;
+}
 
-        .hero h1 {
-            color: #d90000;
-        }
+.hero-img{
+    font-size:90px;
+}
 
-        section {
-            padding: 30px;
-        }
+section{
+    padding:30px;
+}
 
-        .producto {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
+.producto{
+    background:#fff;
+    border:1px solid #ddd;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:8px;
+}
 
-        button {
-            background: #d90000;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+button{
+    background:#d90000;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    cursor:pointer;
+    border-radius:5px;
+}
 
-        button:hover {
-            background: #a80000;
-        }
+button:hover{
+    background:#a80000;
+}
 
-        .redes {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
+.redes{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
 
-        .redes a {
-            text-decoration: none;
-            padding: 10px 15px;
-            background: #ffcc00;
-            color: black;
-            border-radius: 6px;
-            font-weight: bold;
-        }
+.redes a{
+    text-decoration:none;
+    padding:10px 15px;
+    background:#ffcc00;
+    color:black;
+    border-radius:6px;
+    font-weight:bold;
+}
 
-        footer {
-            background: #d90000;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 30px;
-        }
-    </style>
+footer{
+    background:#d90000;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- ===== HEADER / LOGO ===== -->
-    <header>
-        <div class="logo">
-            <!-- Cambiar "logo.png" por el nombre de tu archivo de logo -->
-            <img src="logo.png" alt="Distribuidora La Yunta">
-            <h2>Distribuidora La Yunta</h2>
-        </div>
-    </header>
+<header>
+    <div class="logo">
+        <!-- CAMBIAR logo.png por el nombre exacto de tu archivo -->
+        <img src="logo.png" alt="Logo">
+        <h2>Distribuidora La Yunta</h2>
+    </div>
+</header>
 
-    <!-- ===== BANNER ===== -->
-    <div class="hero-banner">
-        <!-- Cambiar "banner.png" por el nombre de tu archivo de banner -->
-        <img src="banner.png" alt="Distribuidora La Yunta" class="banner-img">
+<div class="hero">
+    <div class="hero-text">
+        <h1>Distribución Mayorista</h1>
+        <p>Pedidos rápidos y atención personalizada para tu comercio.</p>
+    </div>
+    <div class="hero-img">
+        👨‍🦰📦🚚
+    </div>
+</div>
+
+<section>
+    <h2>Catálogo</h2>
+
+    <div class="producto">
+        <h3>Producto 1</h3>
+        <p>$100</p>
+        <button onclick="agregar('Producto 1',100)">Agregar</button>
     </div>
 
-    <!-- ===== CATÁLOGO ===== -->
-    <section>
-        <h2>Catálogo</h2>
-        <div class="producto">
-            <h3>Producto 1</h3>
-            <p>$100</p>
-            <button onclick="agregar('Producto 1',100)">Agregar</button>
-        </div>
-        <div class="producto">
-            <h3>Producto 2</h3>
-            <p>$200</p>
-            <button onclick="agregar('Producto 2',200)">Agregar</button>
-        </div>
-    </section>
+    <div class="producto">
+        <h3>Producto 2</h3>
+        <p>$200</p>
+        <button onclick="agregar('Producto 2',200)">Agregar</button>
+    </div>
+</section>
 
-    <!-- ===== PEDIDO ===== -->
-    <section>
-        <h2>Pedido</h2>
-        <ul id="lista"></ul>
-        <h3>Total: $<span id="total">0</span></h3>
-        <button onclick="enviarPedido()">Enviar por WhatsApp</button>
+<section>
+    <h2>Pedido</h2>
+    <ul id="lista"></ul>
+    <h3>Total: $<span id="total">0</span></h3>
 
-        <div class="redes">
-            <!-- Cambiar número y usuario -->
-            <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
-            <a href="https://instagram.com/TUUSUARIO" target="_blank">Instagram</a>
-        </div>
-    </section>
+    <button onclick="enviarPedido()">Enviar por WhatsApp</button>
 
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        © 2026 Distribuidora La Yunta
-    </footer>
+    <div class="redes">
+        <!-- CAMBIAR EL NUMERO -->
+        <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
 
-    <!-- ===== SCRIPT DE CARRITO ===== -->
-    <script>
-        let carrito = [];
-        let total = 0;
+        <!-- CAMBIAR USUARIO -->
+        <a href="https://instagram.com/TUUSUARIO" target="_blank">Instagram</a>
+    </div>
+</section>
 
-        function agregar(nombre, precio){
-            carrito.push({nombre, precio});
-            total += precio;
-            actualizar();
-        }
+<footer>
+    © 2026 Distribuidora La Yunta
+</footer>
 
-        function actualizar(){
-            let lista = document.getElementById("lista");
-            lista.innerHTML = "";
-            carrito.forEach(item => {
-                let li = document.createElement("li");
-                li.textContent = item.nombre + " - $" + item.precio;
-                lista.appendChild(li);
-            });
-            document.getElementById("total").textContent = total;
-        }
+<script>
+let carrito=[];
+let total=0;
 
-        function enviarPedido(){
-            let mensaje = "Hola, quiero hacer el siguiente pedido:%0A";
-            carrito.forEach(item => {
-                mensaje += item.nombre + " - $" + item.precio + "%0A";
-            });
-            mensaje += "Total: $" + total;
-            // Cambiar número
-            window.open("https://wa.me/549XXXXXXXXXX?text=" + mensaje);
-        }
-    </script>
+function agregar(nombre,precio){
+    carrito.push({nombre,precio});
+    total+=precio;
+    actualizar();
+}
+
+function actualizar(){
+    let lista=document.getElementById("lista");
+    lista.innerHTML="";
+    carrito.forEach(item=>{
+        let li=document.createElement("li");
+        li.textContent=item.nombre+" - $"+item.precio;
+        lista.appendChild(li);
+    });
+    document.getElementById("total").textContent=total;
+}
+
+function enviarPedido(){
+    let mensaje="Hola, quiero hacer el siguiente pedido:%0A";
+    carrito.forEach(item=>{
+        mensaje+=item.nombre+" - $"+item.precio+"%0A";
+    });
+    mensaje+="Total: $"+total;
+
+    // CAMBIAR NUMERO
+    window.open("https://wa.me/549XXXXXXXXXX?text="+mensaje);
+}
+</script>
 
 </body>
 </html>
