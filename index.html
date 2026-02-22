@@ -1,327 +1,276 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Distribuidora La Yunta</title>
+    <meta charset="UTF-8">
+    <title>Distribuidora La Yunta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* ===== GENERAL ===== */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff;
+        }
 
-<style>
+        /* ===== BANNER ===== */
+        .banner-img {
+            width: 75%;
+            max-width: 750px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            display: block;
+            margin: 20px auto;
+        }
 
-body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f2f2f2;
-}
+        /* ===== TITULO SECCIONES ===== */
+        .titulo-seccion {
+            text-align: center;
+            margin: 50px 0 20px 0;
+            font-size: 24px;
+        }
 
-/* ================= HEADER ================= */
+        /* ===== PRODUCTOS ===== */
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 10%;
+        }
 
-.header{
-    background: linear-gradient(135deg, #b80000, #ff2a2a);
-    padding:20px 0;
-    box-shadow:0 4px 15px rgba(0,0,0,0.2);
-}
+        .producto {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: 0.3s;
+        }
 
-.header-contenido{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    max-width:1200px;
-    margin:auto;
-    padding:0 20px;
-}
+        .producto:hover {
+            transform: translateY(-6px);
+        }
 
-.logo{
-    max-width:180px;
-}
+        .producto-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
 
-.menu a{
-    color:white;
-    text-decoration:none;
-    margin-left:25px;
-    font-weight:bold;
-    transition:0.3s;
-}
+        .precio {
+            color: #d90000;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 18px;
+        }
 
-.menu a:hover{
-    opacity:0.8;
-    border-bottom:2px solid white;
-}
+        .cantidad {
+            width: 80px;
+            padding: 6px;
+            margin: 10px 0;
+            text-align: center;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
 
-/* ================= BANNER ================= */
+        .btn-agregar {
+            background: #d90000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-.hero-banner{
-    background:#e9e9e9;
-    display:flex;
-    justify-content:center;
-    padding:20px 0;
-}
+        .btn-agregar:hover {
+            background: #a80000;
+        }
 
-.banner-img{
-    width:75%;
-    max-width:750px;
-    border-radius:12px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.12);
-}
+        /* ===== CARRITO ===== */
+        .carrito {
+            background: white;
+            margin: 60px 10%;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
 
-/* ================= TITULO ================= */
+        .item-carrito {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
 
-.titulo-seccion{
-    text-align:center;
-    margin:50px 0 20px 0;
-    font-size:24px;
-}
+        .btn-eliminar {
+            background: none;
+            border: none;
+            color: red;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-/* ================= PRODUCTOS ================= */
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 18px;
+        }
 
-.productos{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap:30px;
-    padding:0 10%;
-}
+        .btn-finalizar {
+            margin-top: 20px;
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-.producto{
-    background:white;
-    padding:25px;
-    border-radius:18px;
-    box-shadow:0 12px 35px rgba(0,0,0,0.08);
-    text-align:center;
-    transition:0.3s;
-}
+        /* ===== CONTACTO ===== */
+        .contacto {
+            text-align: center;
+            padding: 50px 20px;
+        }
 
-.producto:hover{
-    transform:translateY(-6px);
-}
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, #b80000, #ff2a2a);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
 
-.producto-img{
-    width:100%;
-    height:200px;
-    object-fit:contain;
-    margin-bottom:15px;
-}
+        /* ===== STOCK ===== */
+        .stock {
+            font-weight: bold;
+            margin: 5px 0;
+        }
 
-.precio{
-    color:#d90000;
-    font-weight:bold;
-    margin:10px 0;
-    font-size:18px;
-}
+        .disponible { color: green; }
+        .limitado { color: #e6a700; }
+        .agotado { color: red; }
 
-.cantidad{
-    width:80px;
-    padding:6px;
-    margin:10px 0;
-    text-align:center;
-    border-radius:6px;
-    border:1px solid #ccc;
-}
+        /* ===== NAVBAR ===== */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
 
-.btn-agregar{
-    background:#d90000;
-    color:white;
-    border:none;
-    padding:10px 15px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-}
+        nav a {
+            text-decoration: none;
+            color: #d90000;
+            font-weight: bold;
+        }
 
-.btn-agregar:hover{
-    background:#a80000;
-}
-
-/* ================= CARRITO ================= */
-
-.carrito{
-    background:white;
-    margin:60px 10%;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.1);
-}
-
-.item-carrito{
-    display:flex;
-    justify-content:space-between;
-    margin:10px 0;
-}
-
-.btn-eliminar{
-    background:none;
-    border:none;
-    color:red;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.total{
-    font-weight:bold;
-    margin-top:20px;
-    font-size:18px;
-}
-
-.btn-finalizar{
-    margin-top:20px;
-    background:#25D366;
-    color:white;
-    border:none;
-    padding:12px 18px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-/* ================= CONTACTO ================= */
-
-.contacto{
-    text-align:center;
-    padding:50px 20px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    background: linear-gradient(135deg, #b80000, #ff2a2a);
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:40px;
-}
-    
-/* ================= STOCK ================= */
-
-.stock{
-    font-weight:bold;
-    margin:5px 0;
-}
-
-.disponible{
-    color:green;
-}
-
-.limitado{
-    color:#e6a700;
-}
-
-.agotado{
-    color:red;
-}
-</style>
+    </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
-<div class="header">
-    <div class="header-contenido">
-        <img src="logo.png" alt="Distribuidora La Yunta" class="logo">
-        <nav class="menu">
-            <a href="#">Inicio</a>
-            <a href="#productos">Ver Catálogo</a>
-            <a href="#contacto">Contacto</a>
-            <a href="https://instagram.com/TUUSUARIO" target="_blank">Instagram</a>
-        </nav>
-    </div>
-</div>
-
-<!-- BANNER -->
-<div class="hero-banner">
-    <img src="banner.png" alt="Distribuidora La Yunta" class="banner-img">
-</div>
-
-<h2 class="titulo-seccion">Productos Destacados</h2>
-
-<!-- PRODUCTOS -->
-<section class="productos" id="productos">
-
-    <div class="producto">
-        <img src="arroz.jpeg" alt="Arroz Largo Fino" class="producto-img">
-        <h3>Arroz Largo Fino 1kg</h3>
-        <p class="precio">$850</p>
-        <input type="number" min="1" value="1" class="cantidad" id="cantidad-arroz">
-        <br>
-        <button class="btn-agregar" onclick="agregarAlCarrito('Arroz Largo Fino 1kg', 850, 'cantidad-arroz')">
-            Agregar al carrito
-        </button>
+    <!-- LOGO Y NAV -->
+    <div>
+        <div style="text-align:center; margin-top:20px;">
+            <img src="logo.png" alt="Distribuidora La Yunta" style="height:70px;">
+            <nav>
+                <a href="#">Inicio</a>
+                <a href="#productos">Ver Catálogo</a>
+                <a href="#contacto">Contacto</a>
+                <a href="https://instagram.com/TUUSUARIO" target="_blank">Instagram</a>
+            </nav>
+        </div>
     </div>
 
-</section>
+    <!-- BANNER -->
+    <div>
+        <img src="banner.png" alt="Distribuidora La Yunta" class="banner-img">
+    </div>
 
-<!-- CARRITO -->
-<div class="carrito">
-    <h2>Carrito</h2>
-    <div id="lista-carrito"></div>
-    <div class="total" id="total">Total: $0</div>
-    <button class="btn-finalizar" onclick="finalizarPedido()">
-        Finalizar pedido por WhatsApp
-    </button>
-</div>
+    <!-- PRODUCTOS -->
+    <h2 class="titulo-seccion">Productos Destacados</h2>
+    <section id="productos" class="productos">
+        <div class="producto">
+            <img src="arroz.jpeg" alt="Arroz Largo Fino" class="producto-img">
+            <h3>Arroz Largo Fino 1kg</h3>
+            <p class="precio">$850</p>
+            <input type="number" min="1" value="1" id="cantidad-arroz" class="cantidad">
+            <br>
+            <button class="btn-agregar" onclick="agregarAlCarrito('Arroz Largo Fino 1kg', 850, 'cantidad-arroz')">Agregar al carrito</button>
+        </div>
+    </section>
 
-<!-- CONTACTO -->
-<div class="contacto" id="contacto">
-    <h2>Contacto</h2>
-    <p>Ventas mayoristas</p>
-    <p>WhatsApp: +54 9 XXXX XXXX</p>
-</div>
+    <!-- CARRITO -->
+    <div class="carrito">
+        <h2>Carrito</h2>
+        <div id="lista-carrito"></div>
+        <div class="total" id="total">Total: $0</div>
+        <button class="btn-finalizar" onclick="finalizarPedido()">Finalizar pedido por WhatsApp</button>
+    </div>
 
-<footer>
-    © 2026 Distribuidora La Yunta - Venta Mayorista
-</footer>
+    <!-- CONTACTO -->
+    <div id="contacto" class="contacto">
+        <h2>Contacto</h2>
+        <p>Ventas mayoristas</p>
+        <p>WhatsApp: +54 9 XXXX XXXX</p>
+    </div>
 
-<script>
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Distribuidora La Yunta - Venta Mayorista
+    </footer>
 
-let carrito = [];
+    <!-- SCRIPT CARRITO -->
+    <script>
+        let carrito = [];
 
-function agregarAlCarrito(nombre, precio, idCantidad){
-    let cantidad = parseInt(document.getElementById(idCantidad).value);
-    if(cantidad > 0){
-        carrito.push({nombre, precio, cantidad});
-        actualizarCarrito();
-    }
-}
+        function agregarAlCarrito(nombre, precio, idCantidad){
+            let cantidad = parseInt(document.getElementById(idCantidad).value);
+            if(cantidad > 0){
+                carrito.push({nombre, precio, cantidad});
+                actualizarCarrito();
+            }
+        }
 
-function actualizarCarrito(){
-    let lista = document.getElementById("lista-carrito");
-    lista.innerHTML = "";
-    let total = 0;
+        function actualizarCarrito(){
+            let lista = document.getElementById("lista-carrito");
+            lista.innerHTML = "";
+            let total = 0;
 
-    carrito.forEach((item, index) => {
-        total += item.precio * item.cantidad;
+            carrito.forEach((item, index) => {
+                total += item.precio * item.cantidad;
+                lista.innerHTML += `
+                    <div class="item-carrito">
+                        ${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}
+                        <button class="btn-eliminar" onclick="eliminarItem(${index})">X</button>
+                    </div>
+                `;
+            });
 
-        lista.innerHTML += `
-            <div class="item-carrito">
-                ${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}
-                <button class="btn-eliminar" onclick="eliminarItem(${index})">X</button>
-            </div>
-        `;
-    });
+            document.getElementById("total").innerText = "Total: $" + total;
+        }
 
-    document.getElementById("total").innerText = "Total: $" + total;
-}
+        function eliminarItem(index){
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
 
-function eliminarItem(index){
-    carrito.splice(index, 1);
-    actualizarCarrito();
-}
+        function finalizarPedido(){
+            if(carrito.length === 0){
+                alert("El carrito está vacío");
+                return;
+            }
 
-function finalizarPedido(){
-    if(carrito.length === 0){
-        alert("El carrito está vacío");
-        return;
-    }
+            let mensaje = "Hola! Quiero realizar el siguiente pedido:%0A";
+            carrito.forEach(item => {
+                mensaje += "- " + item.nombre + " x" + item.cantidad + "%0A";
+            });
 
-    let mensaje = "Hola! Quiero realizar el siguiente pedido:%0A";
-    carrito.forEach(item => {
-        mensaje += "- " + item.nombre + " x" + item.cantidad + "%0A";
-    });
-
-    let telefono = "5492901604139"; // PONÉ TU NÚMERO
-    let url = "https://wa.me/" + telefono + "?text=" + mensaje;
-
-    window.open(url, "_blank");
-}
-
-</script>
-
+            let telefono = "5492901604139"; // Cambiar número
+            let url = "https://wa.me/" + telefono + "?text=" + mensaje;
+            window.open(url, "_blank");
+        }
+    </script>
 </body>
 </html>
