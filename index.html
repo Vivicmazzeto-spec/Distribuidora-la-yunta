@@ -1,194 +1,341 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Distribuidora La Yunta</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carolina Design | Diseño Digital & Web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --color-fondo: #f5f5f5;
+            --color-texto: #111;
+            --color-acento: #6c5ce7;
+            --color-secundario: #e0e0e0;
+            --fuente-principal: 'Poppins', sans-serif;
+        }
 
-<style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#fff;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-header{
-    background: linear-gradient(90deg,#d90000,#ffcc00);
-    color:white;
-    padding:20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
+        body {
+            font-family: var(--fuente-principal);
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
 
-.logo img{
-    height:70px;
-}
+        /* --- NAVEGACIÓN --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(245,245,245,0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-.hero{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:30px;
-    background:#fff3e0;
-}
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--color-acento);
+        }
 
-.hero-text{
-    max-width:50%;
-}
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
 
-.hero h1{
-    color:#d90000;
-}
+        .nav-links a:hover {
+            color: var(--color-acento);
+        }
 
-.hero-img{
-    font-size:90px;
-}
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-section{
-    padding:30px;
-}
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+        }
 
-.producto{
-    background:#fff;
-    border:1px solid #ddd;
-    padding:15px;
-    margin-bottom:15px;
-    border-radius:8px;
-}
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
 
-button{
-    background:#d90000;
-    color:white;
-    border:none;
-    padding:8px 15px;
-    cursor:pointer;
-    border-radius:5px;
-}
+        .hero span {
+            color: #ffeaa7;
+        }
 
-button:hover{
-    background:#a80000;
-}
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
 
-.redes{
-    display:flex;
-    gap:15px;
-    margin-top:20px;
-}
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--color-acento);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 2px solid var(--color-acento);
+            transition: 0.3s;
+        }
 
-.redes a{
-    text-decoration:none;
-    padding:10px 15px;
-    background:#ffcc00;
-    color:black;
-    border-radius:6px;
-    font-weight:bold;
-}
+        .btn:hover {
+            background-color: transparent;
+            color: var(--color-acento);
+        }
 
-footer{
-    background:#d90000;
-    color:white;
-    text-align:center;
-    padding:15px;
-    margin-top:30px;
-}
-</style>
+        /* --- SECCIONES --- */
+        .section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--color-acento);
+        }
+
+        /* --- SERVICIOS --- */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--color-secundario);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin: 20px 0;
+            color: var(--color-acento);
+        }
+
+        /* --- PORTAFOLIO --- */
+        .portafolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .proyecto {
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .proyecto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s, opacity 0.3s;
+        }
+
+        .proyecto:hover img {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        /* --- CONTACTO --- */
+        .contacto {
+            text-align: center;
+            background-color: var(--color-secundario);
+        }
+
+        .form-box {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: var(--color-fondo);
+            border: 1px solid #ccc;
+            color: var(--color-texto);
+            border-radius: 5px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-acento);
+        }
+
+        button {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #111;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background-color: var(--color-fondo);
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-    <div class="logo">
-        <!-- CAMBIAR logo.png por el nombre exacto de tu archivo -->
-        <img src="logo.png" alt="Logo">
-        <h2>Distribuidora La Yunta</h2>
-    </div>
-</header>
+    <!-- Navegación -->
+    <nav>
+        <div class="logo">Carolina Design.</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#portafolio">Portafolio</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 
-<div class="hero">
-    <div class="hero-text">
-        <h1>Distribución Mayorista</h1>
-        <p>Pedidos rápidos y atención personalizada para tu comercio.</p>
-    </div>
-    <div class="hero-img">
-        👨‍🦰📦🚚
-    </div>
-</div>
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+        <h1>Diseño Digital & Web <br><span>Creatividad sin límites</span></h1>
+        <p>Transformo ideas en experiencias visuales memorables. Desarrollo marcas y sitios web modernos que realmente conectan con tu audiencia.</p>
+        <a href="#contacto" class="btn">Empezar Proyecto</a>
+    </section>
 
-<section>
-    <h2>Catálogo</h2>
+    <!-- Servicios -->
+    <section id="servicios" class="section">
+        <h2 class="section-title">Mis Servicios</h2>
+        <div class="servicios-grid">
+            <div class="card">
+                <h3>🌐 Diseño Web</h3>
+                <p>Creo sitios web personalizados, responsivos y modernos, desarrollados con HTML, CSS y JavaScript, totalmente adaptados a tu marca.</p>
+            </div>
+            <div class="card">
+                <h3>🎨 Identidad de Marca</h3>
+                <p>Diseño logotipos, paletas de colores y tipografías que reflejan la esencia de tu proyecto y lo hacen memorable.</p>
+            </div>
+            <div class="card">
+                <h3>📱 Redes Sociales</h3>
+                <p>Plantillas, banners y publicaciones visuales que captan la atención y transmiten el mensaje de tu marca con estilo.</p>
+            </div>
+        </div>
+    </section>
 
-    <div class="producto">
-        <h3>Producto 1</h3>
-        <p>$100</p>
-        <button onclick="agregar('Producto 1',100)">Agregar</button>
-    </div>
+    <!-- Portafolio -->
+    <section id="portafolio" class="section">
+        <h2 class="section-title">Trabajos Recientes</h2>
+        <div class="portafolio-grid">
+            <div class="proyecto">
+                <img src="https://via.placeholder.com/400x300/6c5ce7/fff?text=Proyecto+1" alt="Proyecto 1">
+            </div>
+            <div class="proyecto">
+                <img src="https://via.placeholder.com/400x300/a29bfe/fff?text=Proyecto+2" alt="Proyecto 2">
+            </div>
+            <div class="proyecto">
+                <img src="https://via.placeholder.com/400x300/ffeaa7/333?text=Proyecto+3" alt="Proyecto 3">
+            </div>
+        </div>
+    </section>
 
-    <div class="producto">
-        <h3>Producto 2</h3>
-        <p>$200</p>
-        <button onclick="agregar('Producto 2',200)">Agregar</button>
-    </div>
-</section>
+    <!-- Contacto -->
+    <section id="contacto" class="section contacto">
+        <h2 class="section-title">Hablemos</h2>
+        <p style="margin-bottom: 30px; color: #555;">¿Tienes un proyecto en mente? Escríbeme y cotizamos sin compromiso.</p>
+        
+        <div class="form-box">
+            <form action="https://formspree.io/f/tu-email-aqui" method="POST">
+                <input type="text" name="nombre" placeholder="Tu Nombre" required>
+                <input type="email" name="email" placeholder="Tu Correo" required>
+                <textarea name="mensaje" rows="5" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+                <button type="submit" class="btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
 
-<section>
-    <h2>Pedido</h2>
-    <ul id="lista"></ul>
-    <h3>Total: $<span id="total">0</span></h3>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Carolina Design. Todos los derechos reservados.</p>
+        <p style="margin-top: 10px;">Sígueme en Instagram | LinkedIn</p>
+    </footer>
 
-    <button onclick="enviarPedido()">Enviar por WhatsApp</button>
+    <script>
+        // Menú móvil
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
 
-    <div class="redes">
-        <!-- CAMBIAR EL NUMERO -->
-        <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
-
-        <!-- CAMBIAR USUARIO -->
-        <a href="https://instagram.com/TUUSUARIO" target="_blank">Instagram</a>
-    </div>
-</section>
-
-<footer>
-    © 2026 Distribuidora La Yunta
-</footer>
-
-<script>
-let carrito=[];
-let total=0;
-
-function agregar(nombre,precio){
-    carrito.push({nombre,precio});
-    total+=precio;
-    actualizar();
-}
-
-function actualizar(){
-    let lista=document.getElementById("lista");
-    lista.innerHTML="";
-    carrito.forEach(item=>{
-        let li=document.createElement("li");
-        li.textContent=item.nombre+" - $"+item.precio;
-        lista.appendChild(li);
-    });
-    document.getElementById("total").textContent=total;
-}
-
-function enviarPedido(){
-    let mensaje="Hola, quiero hacer el siguiente pedido:%0A";
-    carrito.forEach(item=>{
-        mensaje+=item.nombre+" - $"+item.precio+"%0A";
-    });
-    mensaje+="Total: $"+total;
-
-    // CAMBIAR NUMERO
-    window.open("https://wa.me/549XXXXXXXXXX?text="+mensaje);
-}
-</script>
-
+        // Suavizado al hacer scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
