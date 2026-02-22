@@ -947,49 +947,37 @@
 <body>
 
     <!-- ==================== NAVBAR ==================== -->
-  .navbar {
-    position: sticky; /* queda arriba al hacer scroll */
-    top: 0;
-    width: 100%;
-    background: #d90000; /* tu color principal */
-    z-index: 10;
-}
+  <nav class="navbar" id="navbar">
+    <div class="navbar-contenido">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="img/logo.png" alt="Distribuidora La Yunta" class="logo-img">
+            <span>La Yunta</span>
+        </div>
+        
+        <!-- Menú -->
+        <div class="menu" id="menu">
+            <a href="#inicio">Inicio</a>
+            <a href="#catalogo">Ver Catálogo</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#contacto">Contacto</a>
+            <a href="https://instagram.com/distribuidora_premium" target="_blank" class="instagram-btn">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        </div>
 
-.navbar-contenido {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    padding: 10px 20px;
-}
-
-/* Logo */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-img {
-    max-height: 50px; /* logo más pequeño */
-    width: auto;      /* mantiene proporciones */
-}
-
-/* Menú */
-.menu a {
-    color: white;
-    text-decoration: none;
-    margin-left: 25px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.menu a:hover {
-    opacity: 0.8;
-    border-bottom: 2px solid white;
-}
-
+        <!-- Carrito y menú hamburguesa -->
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <div class="carrito-icon" id="carritoIcon" style="color: var(--color-blanco);">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="carrito-contador" id="carritoContador">0</span>
+            </div>
+            <button class="menu-icon" id="menuIcon">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</nav>
     <!-- ==================== HERO ==================== -->
     <section class="hero" id="inicio">
         <div class="hero-contenido">
