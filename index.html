@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carolina Design | Diseño Digital & Web</title>
+    <title>Distribuidora La Yunta | Catálogo de Productos</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- VARIABLES --- */
         :root {
             --color-fondo: #f5f5f5;
             --color-texto: #111;
@@ -15,327 +14,134 @@
             --fuente-principal: 'Poppins', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--fuente-principal); background: var(--color-fondo); color: var(--color-texto); line-height: 1.6; }
 
-        body {
-            font-family: var(--fuente-principal);
-            background-color: var(--color-fondo);
-            color: var(--color-texto);
-            line-height: 1.6;
-        }
+        h1,h2,h3 { color: var(--color-acento); }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
+        /* NAV */
+        nav { padding: 20px 5%; display:flex; justify-content:space-between; align-items:center; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000; }
+        .logo { font-weight:700; font-size:1.5rem; color: var(--color-acento); }
+        .nav-links { display:flex; gap:20px; }
+        .nav-links a { text-decoration:none; color: var(--color-texto); font-weight:500; }
+        .nav-links a:hover { color: var(--color-acento); }
+        .menu-toggle { display:none; cursor:pointer; }
 
-        /* --- NAVEGACIÓN --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background-color: rgba(245,245,245,0.95);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+        /* HERO */
+        .hero { text-align:center; padding:100px 20px 50px; background: linear-gradient(135deg,#6c5ce7,#a29bfe); color:#fff; }
+        .hero h1 { font-size:2.5rem; margin-bottom:20px; }
+        .hero p { max-width:600px; margin:0 auto 20px; }
 
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--color-acento);
-        }
+        /* CATÁLOGO */
+        .catalogo { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:40px 10%; }
+        .producto { background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; text-align:center; }
+        .producto img { width:100%; height:200px; object-fit:cover; border-radius:10px; margin-bottom:15px; }
+        .producto h3 { margin-bottom:10px; }
+        .producto p { font-size:0.9rem; margin-bottom:15px; color:#555; }
+        .producto span { font-weight:600; font-size:1.1rem; display:block; margin-bottom:10px; }
+        .btn { padding:10px 20px; background: var(--color-acento); color:#fff; border:none; border-radius:30px; cursor:pointer; font-weight:600; transition:0.3s; }
+        .btn:hover { background:transparent; border:2px solid var(--color-acento); color: var(--color-acento); }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
+        /* CARRITO */
+        .carrito-box { position:fixed; top:80px; right:20px; width:300px; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.2); padding:20px; max-height:80vh; overflow-y:auto; }
+        .carrito-box h3 { margin-bottom:15px; text-align:center; }
+        .carrito-item { display:flex; justify-content:space-between; margin-bottom:10px; }
+        .carrito-item span { font-weight:500; }
+        .carrito-total { font-weight:700; margin-top:15px; text-align:right; }
+        .carrito-box form { margin-top:15px; display:flex; flex-direction:column; gap:10px; }
+        .carrito-box input, .carrito-box textarea { padding:8px; border-radius:5px; border:1px solid #ccc; }
+        .carrito-box button { margin-top:10px; }
 
-        .nav-links a:hover {
-            color: var(--color-acento);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* --- HERO --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .hero span {
-            color: #ffeaa7;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            background-color: var(--color-acento);
-            color: white;
-            border-radius: 30px;
-            font-weight: 600;
-            border: 2px solid var(--color-acento);
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background-color: transparent;
-            color: var(--color-acento);
-        }
-
-        /* --- SECCIONES --- */
-        .section {
-            padding: 80px 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: var(--color-acento);
-        }
-
-        /* --- SERVICIOS --- */
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background-color: var(--color-secundario);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            margin: 20px 0;
-            color: var(--color-acento);
-        }
-
-        /* --- PORTAFOLIO --- */
-        .portafolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .proyecto {
-            height: 250px;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .proyecto img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s, opacity 0.3s;
-        }
-
-        .proyecto:hover img {
-            transform: scale(1.05);
-            opacity: 0.8;
-        }
-
-        /* --- CONTACTO --- */
-        .contacto {
-            text-align: center;
-            background-color: var(--color-secundario);
-        }
-
-        .form-box {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            background-color: var(--color-fondo);
-            border: 1px solid #ccc;
-            color: var(--color-texto);
-            border-radius: 5px;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--color-acento);
-        }
-
-        button {
-            width: 100%;
-            cursor: pointer;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #111;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                right: 0;
-                background-color: var(--color-fondo);
-                width: 100%;
-                text-align: center;
-                padding: 20px 0;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-        }
+        /* RESPONSIVE */
+        @media(max-width:768px){.carrito-box{position:static;width:90%;margin:20px auto;} .catalogo{padding:20px;} .hero h1{font-size:2rem;} .hero p{font-size:1rem;} }
     </style>
 </head>
 <body>
 
-    <!-- Navegación -->
     <nav>
-        <div class="logo">Carolina Design.</div>
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#portafolio">Portafolio</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
+        <div class="logo">Distribuidora La Yunta</div>
+        <div class="menu-toggle">☰</div>
+        <div class="nav-links">
+            <a href="#catalogo">Catálogo</a>
+            <a href="#carrito">Pedido</a>
+        </div>
     </nav>
 
-    <!-- Hero -->
-    <section id="inicio" class="hero">
-        <h1>Diseño Digital & Web <br><span>Creatividad sin límites</span></h1>
-        <p>Transformo ideas en experiencias visuales memorables. Desarrollo marcas y sitios web modernos que realmente conectan con tu audiencia.</p>
-        <a href="#contacto" class="btn">Empezar Proyecto</a>
+    <section class="hero">
+        <h1>Bienvenido a Distribuidora La Yunta</h1>
+        <p>Elige los productos que necesitas, agrégalos al carrito y envíanos tu pedido. Nosotros nos encargamos del resto.</p>
     </section>
 
-    <!-- Servicios -->
-    <section id="servicios" class="section">
-        <h2 class="section-title">Mis Servicios</h2>
-        <div class="servicios-grid">
-            <div class="card">
-                <h3>🌐 Diseño Web</h3>
-                <p>Creo sitios web personalizados, responsivos y modernos, desarrollados con HTML, CSS y JavaScript, totalmente adaptados a tu marca.</p>
-            </div>
-            <div class="card">
-                <h3>🎨 Identidad de Marca</h3>
-                <p>Diseño logotipos, paletas de colores y tipografías que reflejan la esencia de tu proyecto y lo hacen memorable.</p>
-            </div>
-            <div class="card">
-                <h3>📱 Redes Sociales</h3>
-                <p>Plantillas, banners y publicaciones visuales que captan la atención y transmiten el mensaje de tu marca con estilo.</p>
-            </div>
+    <section id="catalogo" class="catalogo">
+        <!-- PRODUCTOS -->
+        <div class="producto">
+            <img src="https://via.placeholder.com/300x200?text=Producto+1" alt="Producto 1">
+            <h3>Producto 1</h3>
+            <p>Descripción breve del producto 1.</p>
+            <span>$100</span>
+            <button class="btn" onclick="agregarCarrito('Producto 1',100)">Agregar al pedido</button>
+        </div>
+        <div class="producto">
+            <img src="https://via.placeholder.com/300x200?text=Producto+2" alt="Producto 2">
+            <h3>Producto 2</h3>
+            <p>Descripción breve del producto 2.</p>
+            <span>$150</span>
+            <button class="btn" onclick="agregarCarrito('Producto 2',150)">Agregar al pedido</button>
+        </div>
+        <div class="producto">
+            <img src="https://via.placeholder.com/300x200?text=Producto+3" alt="Producto 3">
+            <h3>Producto 3</h3>
+            <p>Descripción breve del producto 3.</p>
+            <span>$200</span>
+            <button class="btn" onclick="agregarCarrito('Producto 3',200)">Agregar al pedido</button>
         </div>
     </section>
 
-    <!-- Portafolio -->
-    <section id="portafolio" class="section">
-        <h2 class="section-title">Trabajos Recientes</h2>
-        <div class="portafolio-grid">
-            <div class="proyecto">
-                <img src="https://via.placeholder.com/400x300/6c5ce7/fff?text=Proyecto+1" alt="Proyecto 1">
-            </div>
-            <div class="proyecto">
-                <img src="https://via.placeholder.com/400x300/a29bfe/fff?text=Proyecto+2" alt="Proyecto 2">
-            </div>
-            <div class="proyecto">
-                <img src="https://via.placeholder.com/400x300/ffeaa7/333?text=Proyecto+3" alt="Proyecto 3">
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto" class="section contacto">
-        <h2 class="section-title">Hablemos</h2>
-        <p style="margin-bottom: 30px; color: #555;">¿Tienes un proyecto en mente? Escríbeme y cotizamos sin compromiso.</p>
-        
-        <div class="form-box">
-            <form action="https://formspree.io/f/tu-email-aqui" method="POST">
-                <input type="text" name="nombre" placeholder="Tu Nombre" required>
-                <input type="email" name="email" placeholder="Tu Correo" required>
-                <textarea name="mensaje" rows="5" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
-                <button type="submit" class="btn">Enviar Mensaje</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Carolina Design. Todos los derechos reservados.</p>
-        <p style="margin-top: 10px;">Sígueme en Instagram | LinkedIn</p>
-    </footer>
+    <!-- CARRITO DE PEDIDOS -->
+    <div class="carrito-box" id="carrito">
+        <h3>Tu Pedido</h3>
+        <div id="items-carrito"></div>
+        <div class="carrito-total" id="total-carrito">Total: $0</div>
+        <form action="https://formspree.io/f/tu-email-aqui" method="POST">
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+            <input type="email" name="email" placeholder="Correo" required>
+            <input type="text" name="telefono" placeholder="Teléfono" required>
+            <textarea name="mensaje" placeholder="Comentarios adicionales" rows="3"></textarea>
+            <input type="hidden" name="pedido" id="pedido-form">
+            <button type="submit" class="btn">Enviar Pedido</button>
+        </form>
+    </div>
 
     <script>
-        // Menú móvil
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
+        let carrito = [];
+        const itemsCarrito = document.getElementById('items-carrito');
+        const totalCarrito = document.getElementById('total-carrito');
+        const pedidoForm = document.getElementById('pedido-form');
+
+        function agregarCarrito(nombre, precio) {
+            carrito.push({nombre, precio});
+            actualizarCarrito();
         }
 
-        // Suavizado al hacer scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        function actualizarCarrito() {
+            itemsCarrito.innerHTML = '';
+            let total = 0;
+            carrito.forEach((item, index) => {
+                total += item.precio;
+                const div = document.createElement('div');
+                div.className = 'carrito-item';
+                div.innerHTML = `<span>${item.nombre} - $${item.precio}</span> <button onclick="eliminarItem(${index})">X</button>`;
+                itemsCarrito.appendChild(div);
             });
-        });
+            totalCarrito.textContent = `Total: $${total}`;
+            pedidoForm.value = carrito.map(i=>i.nombre + ' $'+i.precio).join(', ');
+        }
+
+        function eliminarItem(index) {
+            carrito.splice(index,1);
+            actualizarCarrito();
+        }
     </script>
+
 </body>
 </html>
